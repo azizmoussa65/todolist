@@ -1,3 +1,5 @@
+# todolist.py
+
 import json
 import os
 
@@ -14,7 +16,7 @@ def load_tasks():
 def save_tasks(tasks):
     """Sauvegarde les tâches dans le fichier JSON."""
     with open(FILE_PATH, 'w') as file:
-        json.dump(tasks, file)
+        json.dump(tasks, file, indent=4)
 
 def add_task(task):
     """Ajoute une nouvelle tâche."""
@@ -42,28 +44,3 @@ def mark_task_done(task_number):
         print(f"Tâche {task_number} marquée comme terminée.")
     else:
         print("Numéro de tâche invalide.")
-
-def main():
-    """Boucle principale de l'application."""
-    while True:
-        print("\nOptions:")
-        print("1. Ajouter une tâche")
-        print("2. Lister les tâches")
-        print("3. Marquer une tâche comme terminée")
-        print("4. Quitter")
-        choice = input("Choisissez une option: ")
-        if choice == '1':
-            task = input("Entrez la tâche: ")
-            add_task(task)
-        elif choice == '2':
-            list_tasks()
-        elif choice == '3':
-            task_number = int(input("Entrez le numéro de la tâche à marquer comme terminée: "))
-            mark_task_done(task_number)
-        elif choice == '4':
-            break
-        else:
-            print("Option invalide. Veuillez réessayer.")
-
-if __name__ == "__main__":
-    main()
